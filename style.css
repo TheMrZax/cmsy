@@ -259,7 +259,8 @@ aside {
     border-top: 2px solid;
     border-right: 2px solid;
     border-bottom: 2px solid;
-    overflow: scroll;
+    overflow-y: scroll;
+    z-index: 10;
 }
 
 aside.informations.active {

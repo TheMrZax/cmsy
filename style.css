@@ -50,6 +50,17 @@ header .title {
     color: white;
 }
 
+nav {
+    position: static;
+}
+
+nav.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    width: 100%;
+}
 
 nav .fas {
     display: block;
@@ -125,7 +136,8 @@ main article {
     position: relative;
     z-index: 0;
     /* border-radius: 20px; */
-    background-color: ghostwhite;
+    background-color: white;
+    box-shadow: 6px 6px ghostwhite;
     border: 4px solid black;
     border-radius: 7px;
 }
@@ -172,10 +184,10 @@ footer {
 }
 
 div.read-more {
-    display: none;
     overflow: scroll;
     overflow-x: hidden;
     position: absolute;
+    opacity: 0;
     border-radius: 7px;
     top: 50%;
     left: 50%;
@@ -185,7 +197,8 @@ div.read-more {
     padding: 20px;
     border: 4px solid black;
     background-color: rgb(255, 255, 255);
-    z-index: 4;
+    z-index: -1;
+    transition: .3s;
 }
 
 div.read-more h2 {
@@ -211,7 +224,8 @@ div.read-more img {
 }
 
 div.read-more.active {
-    display: block;
+    opacity: 1;
+    z-index: 4;
 }
 
 div.read-more .close {
@@ -230,28 +244,53 @@ div.read-more .close {
     cursor: pointer;
 }
 
-
-/* .overlay {
+aside {
     position: fixed;
-    top: 0;
-    left: 0;
-    ddisplay: none; 
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 3;
-} */
+    width: 25vw;
+    height: 500px;
+    top: 50%;
+    left: -100vw;
+    background-color: #222;
+    transform: translateY(-50%);
+    border-radius: 0 7px 7px 0;
+    color: white;
+    padding: 20px;
+    transition: .5s;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+}
 
-/* .one,
-.two,
-.three,
-.four,
-.five,
-.six,
-.seven,
-.eight {
-    display: block;
-} */
+aside.informations.active {
+    left: 0;
+}
+
+aside.about.active {
+    left: 0;
+}
+
+aside .back {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+aside p {
+    margin-top: 15px;
+}
+
+.informations .icon {
+    width: 40px;
+    text-align: center;
+    line-height: 30px;
+    float: left;
+}
+
+.informations .icon .fas {
+    font-size: 25px;
+}
 
 @media (orientation:landscape) {
     header .logo img {
@@ -382,7 +421,7 @@ div.read-more .close {
         display: flex;
         justify-content: space-around;
         padding: 20px 0;
-        max-width: 700px;
+        max-width: 400px;
         margin: 0 auto;
     }
 
@@ -393,6 +432,7 @@ div.read-more .close {
         color: white;
         background: none;
         border: none;
+        outline-color: white;
         font-size: 20px;
         font-weight: bold;
         text-transform: uppercase;

@@ -32,3 +32,29 @@ $('.close,.overlay').on('click', function () {
     $('div.read-more').removeClass('active')
     $('.overlay').removeClass("active")
 })
+
+const navOffset = $('nav').offset().top;
+
+$(document).on('scroll', function () {
+    if ($(window).width() > 960) { //tylko dla szerokich monitorów
+        if ($(window).scrollTop() >= navOffset) {
+            $("nav").addClass("active");
+        } else if ($(window).scrollTop() <= navOffset) {
+            $("nav").removeClass("active");
+        }
+    }
+});
+
+$('nav .content-pc button:nth-of-type(1)').on('click', function () {
+    $('aside.informations').addClass('active')
+})
+$('nav .content-pc button:nth-of-type(2)').on('click', function () {
+    $('aside.about').addClass('active')
+})
+
+$('aside .info').on('click', function () {
+    $('aside.informations').removeClass('active')
+})
+$('aside .about').on('click', function () {
+    $('aside.about').removeClass('active')
+})
